@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <a-scene>
+      <a-sky color = "skyblue"></a-sky>
+      <a-plane id="popup1" width = "2" position = "0 2 -2.001" text = "value : This is my image,\n it is cool because \n I like yellow a lot.; color : purple; width : 2.5; align:center; " visible = "false"> </a-plane>
+
+      <a-plane class = "detectable"  width ="3" height ="1.5" position = " 0 1 -2"  color = "yellow"
+        event-set__click= "_target: #popup1; visible : true"
+        event-set__mouseleave= "_target: #popup1; visible : false"
+      ></a-plane>
+
+      <a-camera position = "0 1.6 0" >
+        <a-cursor raycaster = "objects: .detectable; far : 1.5"
+        event-set__mouseenter= "scale : 4 4 1"
+        event-set__mouseleave= "scale : 1 1 1"
+        ></a-cursor>
+      </a-camera>
+    </a-scene>
+    <script src="script.js"></script>
+  </body>
+</html>
